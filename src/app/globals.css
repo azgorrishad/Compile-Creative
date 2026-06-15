@@ -1,0 +1,329 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: var(--font-display), sans-serif;
+  --font-heading: var(--font-heading), serif;
+  --font-body: var(--font-body), sans-serif;
+}
+
+/* ═══════════════════════════════════════════
+   DESIGN SYSTEM — Compile Creative
+   Premium Editorial Agency Experience
+   ═══════════════════════════════════════════ */
+
+@layer base {
+
+  /* ── Color Tokens ── */
+  :root {
+    --bg-base: #F5F4EE;
+    --bg-surface: #EDECE6;
+    --bg-forest: #27332C;
+    --bg-dark-sage: #1E2A23;
+    --sage: #4B6355;
+    --sage-dark: #36463D;
+    --text-primary: #1D1D1D;
+    --text-muted: #6A6A6A;
+    --text-inverse: #F5F4EE;
+    --gold: #C6A56B;
+    --gold-light: #D4BA8A;
+    --forest: #27332C;
+    --border: rgba(106, 106, 106, 0.2);
+    --border-light: rgba(106, 106, 106, 0.1);
+
+    /* Easing */
+    --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+  }
+
+  /* ── Global Reset ── */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--bg-base);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: 1rem;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ── Typography Defaults ── */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+
+  h1 { font-size: clamp(3rem, 7vw, 6rem); }
+  h2 { font-size: clamp(2.5rem, 5vw, 4.5rem); }
+  h3 { font-size: clamp(1.75rem, 3vw, 2.5rem); }
+  h4 { font-size: clamp(1.25rem, 2vw, 1.75rem); }
+
+  .font-display {
+    font-family: var(--font-display);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+
+  .font-heading {
+    font-family: var(--font-heading);
+    font-weight: 400;
+  }
+
+  ::selection {
+    background-color: var(--sage);
+    color: var(--bg-base);
+  }
+
+  /* ── Reduced Motion ── */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+/* ═══════════════════════════════════════════
+   COMPONENT CLASSES
+   ═══════════════════════════════════════════ */
+
+@layer components {
+
+  /* ── Chapter Label ── 
+     Syne, uppercase, tracked — for section markers like "THE FOUNDATION" */
+  .chapter-label {
+    font-family: var(--font-display);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--sage);
+  }
+
+  /* ── Editorial Headline ── 
+     Cormorant Garamond, huge, tight — magazine cover feel */
+  .editorial-headline {
+    font-family: var(--font-heading);
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+    color: var(--text-primary);
+  }
+
+  /* ── Pull Quote ── 
+     Italic Cormorant with left sage border */
+  .pull-quote {
+    font-family: var(--font-heading);
+    font-style: italic;
+    font-size: clamp(1.5rem, 2.5vw, 2rem);
+    line-height: 1.4;
+    color: var(--text-primary);
+    border-left: 2px solid var(--sage);
+    padding-left: 1.5rem;
+    margin: 2rem 0;
+  }
+
+  /* ── Pill Tag ── 
+     Small label tag with border */
+  .pill-tag {
+    display: inline-flex;
+    align-items: center;
+    font-family: var(--font-display);
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 0.5rem 1.25rem;
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    color: var(--text-muted);
+    background: transparent;
+  }
+
+  /* ── Gold Button (Primary CTA) ── */
+  .gold-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-family: var(--font-display);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    padding: 0.875rem 2rem;
+    background-color: var(--gold);
+    color: var(--bg-forest);
+    border-radius: 0.75rem;
+    text-decoration: none;
+    transition: all 0.4s var(--ease-out-expo);
+    border: none;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .gold-btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, var(--gold-light), var(--gold));
+    opacity: 0;
+    transition: opacity 0.4s var(--ease-out-expo);
+    border-radius: inherit;
+  }
+
+  .gold-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 30px rgba(198, 165, 107, 0.3);
+  }
+
+  .gold-btn:hover::before {
+    opacity: 1;
+  }
+
+  .gold-btn > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── Outline Button (Secondary CTA) ── */
+  .outline-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-family: var(--font-display);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    padding: 0.875rem 2rem;
+    background: transparent;
+    color: var(--text-primary);
+    border: 1px solid var(--border);
+    border-radius: 0.75rem;
+    text-decoration: none;
+    transition: all 0.4s var(--ease-out-expo);
+    cursor: pointer;
+  }
+
+  .outline-btn:hover {
+    border-color: var(--sage);
+    color: var(--sage);
+    transform: translateY(-1px);
+  }
+
+  /* ── Editorial Card ── */
+  .editorial-card {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-light);
+    border-radius: 1rem;
+    padding: 2rem;
+    transition: all 0.5s var(--ease-out-expo);
+  }
+
+  .editorial-card:hover {
+    border-color: var(--border);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.06);
+  }
+
+  /* ── Section Padding ── */
+  .section-padding {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
+
+  @media (min-width: 768px) {
+    .section-padding {
+      padding-top: 8rem;
+      padding-bottom: 8rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .section-padding {
+      padding-top: 10rem;
+      padding-bottom: 10rem;
+    }
+  }
+
+  /* ── Text Gradient ── */
+  .text-gradient-sage {
+    background: linear-gradient(135deg, var(--sage), var(--sage-dark));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-gradient-gold {
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
+
+/* ═══════════════════════════════════════════
+   UTILITY CLASSES
+   ═══════════════════════════════════════════ */
+
+@layer utilities {
+
+  /* ── Section Container ── */
+  .section-container {
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .section-container {
+      padding-left: 3rem;
+      padding-right: 3rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .section-container {
+      padding-left: 5rem;
+      padding-right: 5rem;
+    }
+  }
+
+  /* ── Narrow Container (for reading-width content) ── */
+  .narrow-container {
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  /* ── Image Reveal ── */
+  .image-reveal {
+    clip-path: inset(0 100% 0 0);
+    transition: clip-path 1.2s var(--ease-out-expo);
+  }
+
+  .image-reveal.revealed {
+    clip-path: inset(0 0 0 0);
+  }
+
+  /* ── Horizontal Rule ── */
+  .editorial-rule {
+    height: 1px;
+    background: var(--border);
+    border: none;
+    margin: 0;
+  }
+}
