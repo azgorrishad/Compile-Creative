@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Syne, Cormorant_Garamond, Inter } from "next/font/google";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 
 const syne = Syne({ subsets: ["latin"], variable: "--font-display", weight: ["400", "500", "600", "700", "800"] });
@@ -16,6 +17,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className="scroll-smooth">
       <body suppressHydrationWarning className={`${syne.variable} ${cormorant.variable} ${inter.variable} antialiased`}>
         {children}
+        <SpeedInsights />
       </body>
     </html>
   );
