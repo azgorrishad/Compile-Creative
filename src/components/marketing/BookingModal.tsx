@@ -58,8 +58,8 @@ export default function BookingModal() {
 
     try {
       // Formspree submission
-      // Replace "YOUR_FORMSPREE_ID" with your actual Formspree endpoint ID
-      const response = await fetch("https://formspree.io/f/YOUR_FORMSPREE_ID", {
+      // Submit to Formspree endpoint
+      const response = await fetch("https://formspree.io/f/maqzvnre", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -213,32 +213,14 @@ export default function BookingModal() {
                     animate={{ opacity: 1, x: 0 }}
                     className="flex flex-col items-center justify-center min-h-[400px]"
                   >
-                    {/* Cal.com Placeholder / Instruction */}
-                    <div className="text-center space-y-4 max-w-md mx-auto">
-                      <div className="w-16 h-16 bg-[var(--sage)]/10 rounded-full flex items-center justify-center mx-auto text-[var(--sage)] mb-6">
-                        <CheckCircle size={32} />
-                      </div>
-                      <h3 className="text-2xl font-heading text-[var(--text-primary)]">
-                        Details received.
-                      </h3>
-                      <p className="text-[var(--text-muted)] pb-6">
-                        Please insert your Cal.com embed code here. The user's
-                        details have been submitted to Formspree successfully!
-                      </p>
-
-                      {/* EXAMPLE CAL.COM IFRAME
+                    {/* Cal.com Embed */}
+                    <div className="w-full h-[600px] rounded-xl overflow-hidden bg-[var(--bg-base)]">
                       <iframe
-                        src={`https://cal.com/YOUR_CAL_LINK/30min?name=${encodeURIComponent(formData.name)}&email=${encodeURIComponent(formData.email)}`}
-                        style={{ width: '100%', height: '100%', border: 'none' }}
+                        src={`https://cal.com/compile-creative/30-minute-strategy-audit?name=${encodeURIComponent(
+                          formData.name
+                        )}&email=${encodeURIComponent(formData.email)}`}
+                        style={{ width: "100%", height: "100%", border: "none" }}
                       />
-                      */}
-                      
-                      <button
-                        onClick={closeModal}
-                        className="outline-btn mt-4 w-full"
-                      >
-                        Close
-                      </button>
                     </div>
                   </motion.div>
                 )}
