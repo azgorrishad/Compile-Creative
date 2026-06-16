@@ -1,11 +1,9 @@
 import Hero from "@/components/marketing/Hero";
-import CostOfAverage from "@/components/marketing/CostOfAverage";
+import StorytellingTransition from "@/components/marketing/StorytellingTransition";
+import ValueTransformation from "@/components/marketing/ValueTransformation";
+import TransformationShowcase from "@/components/marketing/TransformationShowcase";
 import FounderPhilosophy from "@/components/marketing/FounderPhilosophy";
-import InsideTheThinking from "@/components/marketing/InsideTheThinking";
-import AdvancedPortfolio from "@/components/marketing/AdvancedPortfolio";
-import CompileMethod from "@/components/marketing/CompileMethod";
-import MeetTheStrategist from "@/components/marketing/MeetTheStrategist";
-import TestimonialsSection from "@/components/marketing/TestimonialsSection";
+import ClientOutcomes from "@/components/marketing/ClientOutcomes";
 import CTASection from "@/components/marketing/CTASection";
 import ScrollProgress from "@/components/marketing/ScrollProgress";
 
@@ -16,23 +14,23 @@ export default function Home() {
       
       {/* Chapter 1: The Opening */}
       <Hero />
-      <CostOfAverage />
       
-      {/* Chapter 2: The Thinking */}
+      {/* Chapter 2: The Truth (Storytelling Transition) */}
+      <StorytellingTransition />
+      
+      {/* Chapter 3: The Unforgettable Moment */}
+      <ValueTransformation />
+      
+      {/* Chapter 4: The Work (Deep case studies) */}
+      <TransformationShowcase />
+      
+      {/* Chapter 5: The Thinker */}
       <FounderPhilosophy />
-      <InsideTheThinking />
       
-      {/* Chapter 3: The Work */}
-      <AdvancedPortfolio />
+      {/* Chapter 6: The Evidence */}
+      <ClientOutcomes />
       
-      {/* Chapter 4: The Method */}
-      <CompileMethod />
-      
-      {/* Chapter 5: The Strategist */}
-      <MeetTheStrategist />
-      <TestimonialsSection />
-      
-      {/* Chapter 6: The Close */}
+      {/* Chapter 7: The Close */}
       <CTASection />
     </>
   );

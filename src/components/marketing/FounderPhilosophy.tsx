@@ -15,7 +15,7 @@ export default function FounderPhilosophy() {
   const imageY = useTransform(scrollYProgress, [0, 1], ["-5%", "5%"]);
 
   return (
-    <section className="section-padding bg-[var(--bg-base)]" id="philosophy">
+    <section className="section-padding bg-[var(--bg-base)] border-t border-[var(--border)]" id="philosophy">
       <div className="section-container">
         {/* Chapter label */}
         <motion.div
@@ -25,7 +25,7 @@ export default function FounderPhilosophy() {
           transition={{ duration: 0.8, ease }}
           className="mb-6"
         >
-          <span className="chapter-label">The Foundation</span>
+          <span className="chapter-label">Meet The Strategist</span>
         </motion.div>
 
         {/* Editorial headline */}
@@ -34,9 +34,10 @@ export default function FounderPhilosophy() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 1, delay: 0.1, ease }}
-          className="editorial-headline mb-16 md:mb-24 max-w-3xl"
+          className="editorial-headline mb-16 md:mb-24 max-w-4xl leading-tight"
         >
-          Why Compile Creative Exists.
+          Most agencies sell deliverables.<br />
+          <span className="text-[var(--text-muted)] italic">I focus on perception.</span>
         </motion.h2>
 
         {/* Two-column editorial layout */}
@@ -48,10 +49,9 @@ export default function FounderPhilosophy() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.8, ease }}
-              className="text-lg leading-relaxed text-[var(--text-primary)] mb-8"
+              className="text-2xl md:text-3xl leading-relaxed text-[var(--text-primary)] mb-8 font-heading italic"
             >
-              Most agencies deliver assets. A logo. A website. A brand guide
-              that sits in a Google Drive folder and slowly gathers digital dust.
+              "Because perception changes pricing. Pricing changes margins. Margins change businesses."
             </motion.p>
 
             <motion.p
@@ -59,29 +59,12 @@ export default function FounderPhilosophy() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.8, delay: 0.1, ease }}
-              className="text-lg leading-relaxed text-[var(--text-muted)] mb-10"
+              className="text-lg leading-relaxed text-[var(--text-muted)] mb-12"
             >
-              Most businesses don&apos;t need more assets. They need leverage.
-              They need someone who understands that design is a strategic tool
-              — not a production service. That positioning is the foundation
-              of every visual decision. That systems compound while one-off
-              deliverables decay.
+              As a strategic advisor, my role is to identify where your brand is losing leverage and engineer systems that recapture it. We don't just build beautiful assets; we construct premium perception that justifies higher pricing, builds immediate trust, and positions you as the unquestionable leader in your category.
             </motion.p>
 
-            {/* Pull quote */}
-            <motion.blockquote
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.8, delay: 0.2, ease }}
-              className="pull-quote mb-10"
-            >
-              Compile Creative exists to bridge strategy, design, systems,
-              and growth — so every decision increases the value of your
-              business.
-            </motion.blockquote>
-
-            {/* AI vs Expert — integrated as a subtle contrast */}
+            {/* The Compile Philosophy */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -89,21 +72,22 @@ export default function FounderPhilosophy() {
               transition={{ duration: 0.8, delay: 0.3, ease }}
               className="border-t border-[var(--border)] pt-8"
             >
-              <p className="text-sm text-[var(--text-muted)] mb-4 font-display font-semibold tracking-wide uppercase">
-                The difference
-              </p>
-              <div className="space-y-3">
+              <h3 className="text-sm text-[var(--text-primary)] mb-6 font-display font-semibold tracking-wide uppercase">
+                The Compile Philosophy
+              </h3>
+              <div className="space-y-6">
                 {[
-                  ["AI generates options.", "We make decisions."],
-                  ["AI produces assets.", "We create positioning."],
-                  ["AI follows prompts.", "We identify opportunities."],
-                ].map(([ai, expert], i) => (
-                  <div key={i} className="flex items-start gap-4 text-sm">
-                    <span className="text-[var(--text-muted)] line-through decoration-[var(--border)] min-w-[180px]">
-                      {ai}
+                  { title: "Decoration is not design.", desc: "Design without positioning is merely decoration. Every visual decision must aggressively support a business outcome." },
+                  { title: "Perception precedes pricing.", desc: "Premium pricing begins with premium perception. If you look like a commodity, you will be priced like one." },
+                  { title: "Strategy creates leverage.", desc: "Strategy is the deliberate architecture of an unfair advantage. If you are competing fairly, your strategy has failed." },
+                  { title: "Systems compound.", desc: "One-off deliverables decay. Cohesive brand systems and architectures compound in value over time." },
+                ].map((item, i) => (
+                  <div key={i} className="flex flex-col gap-1">
+                    <span className="text-[var(--text-primary)] font-heading text-xl">
+                      {item.title}
                     </span>
-                    <span className="text-[var(--text-primary)] font-medium">
-                      {expert}
+                    <span className="text-[var(--text-muted)] text-sm">
+                      {item.desc}
                     </span>
                   </div>
                 ))}
@@ -121,24 +105,24 @@ export default function FounderPhilosophy() {
             className="order-1 lg:order-2 relative overflow-hidden rounded-xl"
           >
             <motion.div
-              className="relative aspect-[4/5] w-full"
+              className="relative aspect-[3/4] w-full"
               style={{ y: imageY }}
             >
               <Image
                 src="/founder-2.jpg"
-                alt="Strategic thinking in action"
+                alt="Saleh Azgor Rishad - Strategic Advisor"
                 fill
-                className="object-cover"
+                className="object-cover contrast-[1.05] saturate-[0.85] sepia-[0.1] hover:saturate-100 hover:sepia-0 transition-all duration-[1s]"
                 sizes="(max-width: 1024px) 100vw, 50vw"
               />
             </motion.div>
             {/* Caption */}
-            <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/40 to-transparent">
-              <p className="text-xs font-display font-semibold tracking-widest uppercase text-white/70">
+            <div className="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-black/80 via-black/40 to-transparent">
+              <p className="text-sm font-display font-semibold tracking-widest uppercase text-[var(--gold)]">
                 Saleh Azgor Rishad
               </p>
-              <p className="text-[0.65rem] text-white/50 mt-1">
-                Founder · Strategist · Creative Director
+              <p className="text-xs text-white/70 mt-2 tracking-wide uppercase font-display">
+                Strategic Advisor · Founder
               </p>
             </div>
           </motion.div>

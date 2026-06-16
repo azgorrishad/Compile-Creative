@@ -46,8 +46,8 @@
     font-family: var(--font-body);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    font-size: 1rem;
-    line-height: 1.7;
+    font-size: 1.1rem;
+    line-height: 1.8;
     overflow-x: hidden;
   }
 
@@ -59,10 +59,10 @@
     line-height: 1.1;
   }
 
-  h1 { font-size: clamp(3rem, 7vw, 6rem); }
-  h2 { font-size: clamp(2.5rem, 5vw, 4.5rem); }
-  h3 { font-size: clamp(1.75rem, 3vw, 2.5rem); }
-  h4 { font-size: clamp(1.25rem, 2vw, 1.75rem); }
+  h1 { font-size: clamp(3.6rem, 8.4vw, 7.2rem); }
+  h2 { font-size: clamp(3rem, 6vw, 5.4rem); }
+  h3 { font-size: clamp(2.1rem, 3.6vw, 3rem); }
+  h4 { font-size: clamp(1.5rem, 2.4vw, 2.1rem); }
 
   .font-display {
     font-family: var(--font-display);
@@ -111,7 +111,7 @@
      Cormorant Garamond, huge, tight — magazine cover feel */
   .editorial-headline {
     font-family: var(--font-heading);
-    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    font-size: clamp(3rem, 6vw, 5.4rem);
     font-weight: 400;
     letter-spacing: -0.02em;
     line-height: 1.05;
@@ -168,6 +168,7 @@
     cursor: pointer;
     position: relative;
     overflow: hidden;
+    min-height: 44px;
   }
 
   .gold-btn::before {
@@ -212,6 +213,7 @@
     text-decoration: none;
     transition: all 0.4s var(--ease-out-expo);
     cursor: pointer;
+    min-height: 44px;
   }
 
   .outline-btn:hover {

@@ -12,9 +12,16 @@ const HeroContent = ({ isMask = false, setIsHovered }: { isMask?: boolean, setIs
   const ease = [0.16, 1, 0.3, 1] as const;
   
   return (
-    <div className="section-container relative z-10 w-full h-full flex flex-col justify-center pointer-events-none">
+    <div className="section-container relative z-10 w-full min-h-[95vh] flex flex-col justify-center pt-24 lg:pt-32 pb-20 pointer-events-none">
+      {/* Protective gradient for text readability - using radial to reveal the edges */}
+      {!isMask && (
+        <div 
+          className="absolute inset-0 -z-10 pointer-events-none" 
+          style={{ background: 'radial-gradient(ellipse 60% 80% at 30% 50%, var(--bg-base) 40%, transparent 100%)' }}
+        />
+      )}
       <div
-        className={`max-w-5xl pt-32 pb-20 ${isMask ? 'pointer-events-none' : 'pointer-events-auto'}`}
+        className={`max-w-5xl ${isMask ? 'pointer-events-none' : 'pointer-events-auto'}`}
         onMouseEnter={() => !isMask && setIsHovered(true)}
         onMouseLeave={() => !isMask && setIsHovered(false)}
       >
@@ -23,7 +30,7 @@ const HeroContent = ({ isMask = false, setIsHovered }: { isMask?: boolean, setIs
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease }}
-          className="mb-10"
+          className="mb-6"
         >
           <span className={`chapter-label ${
             isMask ? "text-[var(--bg-forest)]" : "text-[var(--sage)]"
@@ -37,19 +44,17 @@ const HeroContent = ({ isMask = false, setIsHovered }: { isMask?: boolean, setIs
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.15, ease }}
-          className={`font-heading tracking-tight mb-10 leading-[1.02] ${
+          className={`font-heading tracking-tight text-5xl md:text-6xl lg:text-[5.5rem] mb-8 leading-[1.05] max-w-[850px] ${
             isMask ? "text-[var(--bg-forest)]" : "text-[var(--text-primary)]"
           }`}
-          style={{ fontSize: "clamp(3rem, 7vw, 6.5rem)" }}
         >
-          {isMask ? "Build" : "Run"} {isMask ? "Brands" : "a Business"}{" "}<br />
-          Worth {isMask ? "More" : "Less"} Tomorrow<br />
+          People don't buy the best product.<br />
           <span className={
             isMask
               ? "text-[var(--bg-forest)]/70"
               : "text-[var(--text-muted)]"
           }>
-            Than {isMask ? "They Are" : "It Is"} Today.
+            They buy the brand they trust most.
           </span>
         </motion.h1>
 
@@ -58,13 +63,11 @@ const HeroContent = ({ isMask = false, setIsHovered }: { isMask?: boolean, setIs
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.35, ease }}
-          className={`text-lg md:text-xl max-w-xl mb-14 leading-relaxed ${
+          className={`text-lg md:text-xl max-w-xl mb-10 leading-relaxed ${
             isMask ? "text-[var(--bg-forest)]/80" : "text-[var(--text-muted)]"
           }`}
         >
-          We partner with ambitious founders to strengthen positioning,
-          eliminate operational friction, and create systems that increase
-          enterprise value.
+          Compile Creative helps ambitious founders build premium perception, stronger positioning, and scalable growth systems that increase business value over time.
         </motion.p>
 
         {/* CTAs */}
@@ -78,22 +81,22 @@ const HeroContent = ({ isMask = false, setIsHovered }: { isMask?: boolean, setIs
             href="#book"
             className={`group w-full sm:w-auto ${
               isMask
-                ? "bg-[var(--bg-forest)] text-[var(--sage)] px-8 py-4 rounded-xl font-display text-sm font-semibold tracking-wide inline-flex items-center gap-2"
+                ? "bg-[var(--bg-forest)] text-[var(--sage)] px-8 py-4 rounded-xl font-display text-sm font-semibold tracking-wide inline-flex items-center justify-center gap-2"
                 : "gold-btn"
             }`}
           >
-            <span>Book a Strategy Audit</span>
+            <span>Book Strategy Audit</span>
             <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
           </a>
           <Link
             href="#work"
-            className={`w-full sm:w-auto ${
+            className={`w-full sm:w-auto flex justify-center ${
               isMask
                 ? "text-[var(--bg-forest)] border border-[var(--bg-forest)]/30 px-8 py-4 rounded-xl font-display text-sm font-semibold tracking-wide"
                 : "outline-btn"
             }`}
           >
-            View Our Work
+            View Selected Work
           </Link>
         </motion.div>
       </div>
@@ -150,7 +153,7 @@ export default function Hero() {
       <div className="absolute inset-0 z-0">
         <Hero3DScene />
       </div>
-      <div className="absolute inset-0 z-10">
+      <div className="relative z-10 w-full">
         <HeroContent setIsHovered={setIsHovered} />
       </div>
 
@@ -170,15 +173,16 @@ export default function Hero() {
         </motion.div>
       </motion.div>
 
-      {/* LAYER 2: Sage mask reveal */}
+      {/* LAYER 2: Sage mask reveal - Disabled on Mobile for performance */}
       {isMounted && (
         <motion.div
-          className="absolute inset-0 z-20 bg-[var(--sage)] pointer-events-none"
+          className="absolute inset-0 z-20 bg-[var(--sage)] pointer-events-none hidden md:block"
           style={{ clipPath }}
         >
           <HeroContent isMask setIsHovered={setIsHovered} />
         </motion.div>
       )}
+
     </section>
   );
 }
