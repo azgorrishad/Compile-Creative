@@ -8,10 +8,10 @@ export default function FounderStory() {
     <section className="bg-[var(--bg-base)] py-32 md:py-48 overflow-hidden relative border-t border-[var(--border)]">
       <div className="section-container">
         
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-8 items-start">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-16 lg:gap-8 items-start">
           
           {/* Copy Column */}
-          <div className="lg:col-span-6 flex flex-col justify-center">
+          <div className="lg:col-span-4 flex flex-col justify-center">
             <motion.span 
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
@@ -53,32 +53,55 @@ export default function FounderStory() {
               className="mt-16 flex flex-col gap-2"
             >
               <h3 className="text-xl font-heading font-medium text-[var(--text-primary)]">Saleh Azgor Rishad</h3>
-              <p className="text-[var(--text-muted)] font-mono text-sm uppercase tracking-wider">
-                Founder • Strategist • Creative Director • Growth Systems Thinker
+              <p className="text-[var(--text-muted)] font-mono text-xs uppercase tracking-widest leading-relaxed">
+                Founder • Strategist<br/>
+                Beauty, Fragrance & Lifestyle Expertise
               </p>
             </motion.div>
           </div>
 
+          {/* Philosophy Column */}
+          <div className="lg:col-span-4 flex flex-col justify-center lg:px-8">
+            <motion.h3
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="font-heading text-3xl text-[var(--text-primary)] mb-8"
+            >
+              The Philosophy.
+            </motion.h3>
+            <ul className="flex flex-col gap-6">
+              {[
+                "Decoration is not design.",
+                "Perception precedes pricing.",
+                "Strategy creates leverage.",
+                "Systems compound."
+              ].map((tenet, idx) => (
+                <motion.li
+                  key={idx}
+                  initial={{ opacity: 0, x: -10 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.2 + (idx * 0.1) }}
+                  className="flex items-center gap-4 text-lg md:text-xl text-[var(--text-muted)]"
+                >
+                  <div className="w-1.5 h-1.5 rounded-full bg-[var(--gold)]" />
+                  {tenet}
+                </motion.li>
+              ))}
+            </ul>
+          </div>
+
           {/* Image Column */}
-          <div className="lg:col-span-5 lg:col-start-8 relative">
+          <div className="lg:col-span-4 relative">
             <motion.div 
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 1 }}
-              className="relative w-full aspect-[3/4] md:aspect-square lg:aspect-[3/4] rounded-sm overflow-hidden"
+              className="relative w-full aspect-[3/4] md:aspect-[4/5] rounded-xl overflow-hidden shadow-2xl"
             >
-              <Image src="/founder-1.jpg" alt="Saleh Azgor Rishad" fill className="object-cover" priority />
-            </motion.div>
-            
-            <motion.div 
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              className="absolute -bottom-12 -left-12 w-2/3 aspect-square rounded-sm overflow-hidden border-8 border-[var(--bg-base)] hidden md:block shadow-2xl"
-            >
-              <Image src="/founder-2.jpg" alt="Compile Creative Strategy" fill className="object-cover" />
+              <Image src="/founder-1.jpg" alt="Saleh Azgor Rishad" fill className="object-cover" priority sizes="(max-width: 1024px) 100vw, 33vw" />
             </motion.div>
           </div>
           

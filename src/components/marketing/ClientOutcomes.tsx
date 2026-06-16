@@ -5,22 +5,24 @@ import { motion, useScroll, useTransform } from "framer-motion";
 
 const outcomes = [
   {
-    metric: "3x",
-    label: "Pricing Leverage",
-    insight: "When Aria Milano's brand identity aligned with their product quality, they were able to raise their baseline price by 300% without increasing customer acquisition cost. Premium perception justifies premium pricing.",
-    client: "Aria Milano"
+    metric: "Premium",
+    label: "Positioning",
+    insight: "We elevate brands out of the commodity trap. By signaling higher perceived value through meticulous design systems, you are no longer competing on price.",
+    client: "Strategic Advantage"
   },
   {
-    metric: "140%",
-    label: "Conversion Lift",
-    insight: "SumiCo was losing visitors because their site looked like a generic Shopify store. By injecting character-driven branding into the UI, trust increased instantly, leading to a 140% lift in direct sales.",
-    client: "SumiCo"
+    number: "Brand",
+    metric: "Consistency",
+    label: "Architecture",
+    insight: "Fragmented brands lose trust. We architect rigorous visual ecosystems that ensure every single touchpoint reinforces a singular, unbreakable narrative.",
+    client: "Operational Scale"
   },
   {
-    metric: "Category",
-    label: "Leadership",
-    insight: "Flex City didn't need better clothes; they needed a better community architecture. Positioning them as a cultural anchor rather than an apparel brand created fierce loyalty and organic growth.",
-    client: "Flex City"
+    number: "Market",
+    metric: "Differentiation",
+    label: "Defensibility",
+    insight: "Looking like everyone else is the fastest way to become irrelevant. We build distinctive assets that command attention and create a moat around your business.",
+    client: "Long-Term Equity"
   }
 ];
 
@@ -33,7 +35,7 @@ export default function ClientOutcomes() {
           <span className="chapter-label text-[var(--gold)]">The Evidence</span>
           <h2 className="editorial-headline text-[var(--text-inverse)] mt-4 max-w-3xl">
             We don't sell design.<br/>
-            <span className="text-[var(--gold)] italic">We sell business outcomes.</span>
+            <span className="text-[var(--gold)] italic">We build perception.</span>
           </h2>
         </div>
 
@@ -72,7 +74,7 @@ function OutcomeCard({ outcome, index }: { outcome: any, index: number }) {
 
       <div className="pt-4 border-t border-white/10">
         <span className="font-display text-xs tracking-widest uppercase text-white/40">
-          Case Study: {outcome.client}
+          Result: {outcome.client}
         </span>
       </div>
     </motion.div>

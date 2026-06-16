@@ -34,19 +34,19 @@ export default function Footer() {
             <h4 className="font-display text-xs font-semibold uppercase tracking-widest text-[var(--bg-base)]/40 mb-6">Connect</h4>
             <ul className="space-y-4 text-sm font-medium text-[var(--bg-base)]/80">
               <li>
-                <Link href="mailto:compilecreative@gmail.com" className="hover:text-[var(--gold)] transition-colors flex items-center gap-1 group">
-                  compilecreative@gmail.com
+                <Link href="mailto:hello@compilecreative.com" className="hover:text-[var(--gold)] transition-colors flex items-center gap-1 group">
+                  hello@compilecreative.com
                   <ArrowUpRight size={14} className="opacity-50 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
                 </Link>
               </li>
               <li>
-                <Link href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="hover:text-[var(--gold)] transition-colors flex items-center gap-1 group">
+                <Link href="https://linkedin.com/in/salehazgorrishad" target="_blank" rel="noopener noreferrer" className="hover:text-[var(--gold)] transition-colors flex items-center gap-1 group">
                   LinkedIn
                   <ArrowUpRight size={14} className="opacity-50 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
                 </Link>
               </li>
               <li>
-                <Link href="https://x.com" target="_blank" rel="noopener noreferrer" className="hover:text-[var(--gold)] transition-colors flex items-center gap-1 group">
+                <Link href="https://twitter.com/compilecreative" target="_blank" rel="noopener noreferrer" className="hover:text-[var(--gold)] transition-colors flex items-center gap-1 group">
                   Twitter / X
                   <ArrowUpRight size={14} className="opacity-50 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
                 </Link>

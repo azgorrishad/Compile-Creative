@@ -3,15 +3,15 @@
 import { useEffect, useState, useRef } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 
-const particles = Array.from({ length: 120 }).map((_, i) => ({
+const particles = Array.from({ length: 60 }).map((_, i) => ({
   id: i,
-  x: Math.random() * 120 - 10, // -10% to 110%
+  x: Math.random() * 120 - 10,
   y: Math.random() * 120 - 10,
-  z: Math.random() * 2000 - 1000, // -1000 to 1000 (massive depth)
-  size: Math.random() * 5 + 2,
-  parallaxSpeedX: (Math.random() - 0.5) * 200,
-  parallaxSpeedY: (Math.random() - 0.5) * 200,
-  opacity: Math.random() * 0.5 + 0.1,
+  z: Math.random() * 2000 - 1000,
+  size: Math.random() * 4 + 2,
+  parallaxSpeedX: (Math.random() - 0.5) * 150,
+  parallaxSpeedY: (Math.random() - 0.5) * 150,
+  opacity: Math.random() * 0.3 + 0.05,
   type: i % 4 === 0 ? 'plus' : i % 4 === 1 ? 'ring' : 'dot',
 }));
 
@@ -225,9 +225,9 @@ export default function Hero3DScene() {
             ═══════════════════════════════════════ */}
         <motion.div
           style={{ x: bgX, y: bgY, transform: 'translateZ(-200px)' }}
-          className="absolute left-[5%] top-[15%] w-32 h-32 opacity-30"
+          className="absolute left-[5%] top-[15%] w-32 h-32 opacity-15"
         >
-          <motion.div animate={{ rotateX: 360, rotateY: 360 }} transition={{ duration: 30, repeat: Infinity, ease: "linear" }} className="w-full h-full relative" style={{ transformStyle: 'preserve-3d' }}>
+          <motion.div animate={{ rotateX: 360, rotateY: 360 }} transition={{ duration: 40, repeat: Infinity, ease: "linear" }} className="w-full h-full relative" style={{ transformStyle: 'preserve-3d' }}>
             <div className="absolute inset-0 border border-[var(--bg-forest)] rounded-full" style={{ transform: 'rotateX(0deg)' }} />
             <div className="absolute inset-0 border border-[var(--bg-forest)] rounded-full" style={{ transform: 'rotateX(45deg)' }} />
             <div className="absolute inset-0 border border-[var(--bg-forest)] rounded-full" style={{ transform: 'rotateX(90deg)' }} />
@@ -240,10 +240,10 @@ export default function Hero3DScene() {
             ═══════════════════════════════════════ */}
         <motion.div
           style={{ x: fgX, y: fgY, transform: 'translateZ(400px)' }}
-          className="absolute -right-[5%] top-[30%] w-40 h-40"
+          className="absolute -right-[5%] top-[30%] w-40 h-40 opacity-70"
         >
-          <motion.div animate={{ y: [-20, 20, -20] }} transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}>
-            <div className="w-full h-full rounded-full bg-gradient-to-br from-white/60 to-white/10 backdrop-blur-3xl shadow-[0_30px_60px_rgba(0,0,0,0.05)] border border-white/50" />
+          <motion.div animate={{ y: [-20, 20, -20] }} transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}>
+            <div className="w-full h-full rounded-full bg-gradient-to-br from-white/40 to-white/5 backdrop-blur-2xl shadow-[0_30px_60px_rgba(0,0,0,0.03)] border border-white/30" />
           </motion.div>
         </motion.div>
 
@@ -252,9 +252,9 @@ export default function Hero3DScene() {
             ═══════════════════════════════════════ */}
         <motion.div
           style={{ x: mgX, y: mgY, transform: 'translateZ(-50px)' }}
-          className="absolute left-[10%] bottom-[20%] w-48 h-48 opacity-40"
+          className="absolute left-[10%] bottom-[20%] w-48 h-48 opacity-20"
         >
-          <motion.div animate={{ rotateZ: 360, scale: [1, 1.1, 1] }} transition={{ duration: 40, repeat: Infinity, ease: "linear" }} className="w-full h-full">
+          <motion.div animate={{ rotateZ: 360, scale: [1, 1.05, 1] }} transition={{ duration: 50, repeat: Infinity, ease: "linear" }} className="w-full h-full">
             <svg viewBox="0 0 100 100" className="w-full h-full text-[var(--sage)]" fill="currentColor">
               <path d="M50 0 L100 25 L100 75 L50 100 L0 75 L0 25 Z" fillOpacity="0.1" stroke="currentColor" strokeWidth="0.5" />
             </svg>

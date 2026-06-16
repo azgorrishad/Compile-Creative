@@ -44,18 +44,11 @@ const HeroContent = ({ isMask = false, setIsHovered }: { isMask?: boolean, setIs
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.15, ease }}
-          className={`font-heading tracking-tight text-5xl md:text-6xl lg:text-[5.5rem] mb-8 leading-[1.05] max-w-[850px] ${
+          className={`font-heading tracking-tight text-6xl md:text-7xl lg:text-[6.5rem] mb-12 leading-[1.02] max-w-[900px] ${
             isMask ? "text-[var(--bg-forest)]" : "text-[var(--text-primary)]"
           }`}
         >
-          People don't buy the best product.<br />
-          <span className={
-            isMask
-              ? "text-[var(--bg-forest)]/70"
-              : "text-[var(--text-muted)]"
-          }>
-            They buy the brand they trust most.
-          </span>
+          Build brands worth more tomorrow than they are today.
         </motion.h1>
 
         {/* Subline */}

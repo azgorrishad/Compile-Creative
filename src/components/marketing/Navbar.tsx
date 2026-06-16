@@ -2,8 +2,9 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
+import { Menu, X } from "lucide-react";
 
 const navLinks = [
   { label: "Portfolio", href: "#work" },
@@ -15,12 +16,29 @@ const navLinks = [
 export default function Navbar() {
   const { scrollY } = useScroll();
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setIsMenuOpen(false);
+    };
+    if (isMenuOpen) {
+      document.body.style.overflow = "hidden";
+      window.addEventListener("keydown", handleKeyDown);
+    } else {
+      document.body.style.overflow = "auto";
+    }
+    return () => {
+      document.body.style.overflow = "auto";
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isMenuOpen]);
 
   const backgroundColor = useTransform(
     scrollY,
@@ -71,19 +89,73 @@ export default function Navbar() {
           ))}
         </div>
 
-        {/* CTA */}
-        <div className="flex items-center gap-5">
+        {/* CTA & Mobile Toggle */}
+        <div className="flex items-center gap-4">
           <Link
             href="/login"
-            className="hidden lg:block font-display text-[0.75rem] font-semibold tracking-[0.05em] text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors duration-300"
+            className="hidden lg:block font-display text-[0.75rem] font-semibold tracking-[0.05em] text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors duration-300 min-h-[44px] min-w-[44px] flex items-center justify-center"
           >
             Client Portal
           </Link>
-          <a href="#book" className="gold-btn text-xs py-2.5 px-5">
+          <a href="#book" className="gold-btn text-xs py-2.5 px-5 hidden md:flex items-center min-h-[44px]">
             <span>Book Strategy Audit</span>
           </a>
+          
+          <button 
+            className="md:hidden flex flex-col justify-center items-center w-11 h-11 relative z-[60] text-[var(--text-primary)]"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label="Toggle Menu"
+          >
+            {isMenuOpen ? <X size={24} className="text-[var(--bg-base)]" /> : <Menu size={24} />}
+          </button>
         </div>
       </div>
+
+      {/* Mobile Full Screen Drawer */}
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: "-100%" }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: "-100%" }}
+            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+            className="fixed inset-0 bg-[var(--text-primary)] z-50 flex flex-col justify-center items-center p-6"
+          >
+            <div className="flex flex-col items-center gap-10 w-full">
+              {navLinks.map((link, i) => (
+                <motion.div
+                  key={link.label}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.2 + (i * 0.1), duration: 0.5 }}
+                >
+                  <Link
+                    href={link.href}
+                    onClick={() => setIsMenuOpen(false)}
+                    className="font-heading text-4xl text-[var(--bg-base)] flex items-center justify-center min-h-[44px] w-full px-8 py-4"
+                  >
+                    {link.label}
+                  </Link>
+                </motion.div>
+              ))}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2 + (navLinks.length * 0.1), duration: 0.5 }}
+                className="w-full mt-8"
+              >
+                <a 
+                  href="#book" 
+                  onClick={() => setIsMenuOpen(false)}
+                  className="w-full flex justify-center py-5 bg-[var(--gold)] text-[var(--bg-forest)] rounded-xl font-display font-semibold uppercase tracking-widest text-sm min-h-[44px]"
+                >
+                  Book Strategy Audit
+                </a>
+              </motion.div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.nav>
   );
 }

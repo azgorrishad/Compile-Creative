@@ -7,8 +7,30 @@ const cormorant = Cormorant_Garamond({ subsets: ["latin"], variable: "--font-hea
 const inter = Inter({ subsets: ["latin"], variable: "--font-body" });
 
 export const metadata: Metadata = {
-  title: "Compile Creative — Strategic Growth Partner",
-  description: "We partner with ambitious founders to strengthen positioning, eliminate operational friction, and create systems that increase enterprise value.",
+  title: "Compile Creative — Strategic Growth & Brand Positioning",
+  description: "We help ambitious founders build premium perception, stronger positioning, and scalable growth systems that increase business value over time.",
+  openGraph: {
+    title: "Compile Creative — Premium Perception",
+    description: "Build brands worth more tomorrow than they are today.",
+    url: "https://compilecreative.com",
+    siteName: "Compile Creative",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Compile Creative Logo",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Compile Creative",
+    description: "Build brands worth more tomorrow than they are today.",
+    images: ["/og-image.jpg"],
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
